@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
 
-def generate(output)
+def generate(output,people)
 	names = ["Sanyi","Beno","Geza","Judit","Tivadar","Lilla","Matyi","Gizi","Klari","Cilike","Janos","Marci","Botond","Zita","Aniko"]
 	names.shuffle!
 	sum = 0
-	7.times do
+	(people-1).times do
 		szam = Random.rand(-20000..30000)
 		output.store(names.pop,szam)
 		sum += szam
@@ -14,9 +14,9 @@ def generate(output)
 	sum.abs
 end
 
-def create_expenses()
+def create_expenses(people)
 	output = Hash.new
-	while generate(output)>1500 do
+	while generate(output,people)>1500 do
 		output.clear
 	end
 	output
